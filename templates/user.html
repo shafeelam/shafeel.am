@@ -1,0 +1,177 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>User</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'img/SH.png' %}" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'vendor1/bootstrap/css/bootstrap.min.css' %}"  rel="stylesheet">
+  <link href="{% static 'vendor1/bootstrap-icons/bootstrap-icons.css' %}"  rel="stylesheet">
+  <link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'css/style.css' %}"  rel="stylesheet">
+  <link href="{% static 'css1/style1.css' %}"  rel="stylesheet">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,100&display=swap" rel="stylesheet">
+
+
+  <!-- =======================================================
+  * Template Name: WeBuild - v4.7.0
+  * Template URL: https://bootstrapmade.com/free-bootstrap-coming-soon-template-countdwon/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+  
+  <!-- ======= Header ======= -->
+  <header id="header">
+    <div class="container-fluid d-flex justify-content-between ">
+
+      <div class="logo">
+        <h1 class="text-primary">Shafeel AM</h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
+
+      <div class="contact-link float-right">
+        <a href="#contact">Contact Us</a>
+        <a href="logout">Logout</a>     
+      </div>
+    </div>
+  </header><!-- End #header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+      <h1>Hello {{user.first_name}} ,</h1>
+      <h2>We're working hard to improve our website and we'll ready to launch after</h2>
+      <div class="countdown" data-count="2023/12/3" data-template="%d days %h:%m:%s"></div>
+
+      <form action="" method="post" role="form" class="form">
+        <div class="row no-gutters" id="newsletter">
+          <div class="col-md-6 form-group pr-md-1">
+            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+          </div>
+          <div class="col-md-6 form-group pl-md-1">
+            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+          </div>
+        </div>
+
+        <br>
+        <br>
+        <div class="text-center"><button type="submit">Get notified!</button></div>
+      </form>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= Contact Us Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Contact Us</h2>
+        </div>
+
+        <div class="row contact-info">
+
+          <div class="col-md-4">
+            <div class="contact-address">
+              <i class="bi bi-geo-alt"></i>
+              <h3>Location:</h3>
+              <address>Abu Shagara - Sharjah - United Arab Emirates</address>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="contact-phone">
+              <i class="bi bi-phone"></i>
+              <h3>Phone Number</h3>
+              <p><a href="tel:+155895548855">+971 565943716</a></p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="contact-email">
+              <i class="bi bi-envelope"></i>
+              <h3>Email</h3>
+              <p><a href="mailto:info@example.com">shafeelam68@gmail.com</a></p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="form">
+          
+          <form action="messages" method="post" role="form" class="form">
+            {% csrf_token %}
+            <div class="row">
+              <div class="col-md form-group">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+              </div>
+              <div class="col-md form-group mt-3 mt-md-0">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+              </div>
+            </div>
+            <div class="form-group mt-3">
+              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+            </div>
+            <div class="form-group mt-3">
+              <textarea class="form-control" name="message" id="message" rows="5" placeholder="Message" required></textarea>
+            </div>
+            <br>
+            <br>
+            <div class="text-center"><button type="submit">Send Message</button></div>
+          </form>
+
+          {% for message in messages %}
+          <h4 style="color:#ff0000">{{message}} </h4>
+        {% endfor %}
+        <h4 style="color:green">{{msged}} </h4>
+        </div>
+
+      </div>
+    </section><!-- End Contact Us Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Shafeel AM</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        Designed by <a href="">Shafeel AM</a>
+      </div>
+    </div>
+  </footer><!-- End #footer -->
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'vendor1/bootstrap/js/bootstrap.bundle.min.js' %}" ></script>
+  <script src="{% static 'vendor1/php-email-form/validate.js' %}" ></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'js1/main.js' %}" ></script>
+
+</body>
+
+</html>
